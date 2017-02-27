@@ -12,6 +12,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
+                    <th>Ações</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -19,7 +20,14 @@
                     <tr>
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
-                        <td>Açoes</td>
+                        <td>
+                            <a href="{{route('categories.edit',['$category'=>$category->id])}}" class="btn btn-info" style="float: left; margin-right: 10px;">Edit</a>
+                            <form action="{{route('categories.destroy',['category'=>$category->id])}}" method="post" style="padding: 0; margin: 0;">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
