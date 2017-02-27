@@ -28,3 +28,11 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
         'name' => ucwords($faker->unique()->word),
     ];
 });
+
+$factory->define(App\Book::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->title,
+        'subtitle' => $faker->sentence(),
+        'price' => $faker->randomNumber(2),
+    ];
+});
