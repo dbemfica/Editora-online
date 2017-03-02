@@ -1,6 +1,6 @@
 <?php
 if( !function_exists('hasError') ){
-    function hasError($errors){
+    function hasError($filed,$errors){
         if($errors->any()){
             return " has-error";
         }

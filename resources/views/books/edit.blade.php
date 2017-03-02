@@ -9,13 +9,15 @@
             <form class="form" action="{{ route('books.update',['book' => $book->id]) }}" method="post">
                 {{ csrf_field() }}
                 <input type="hidden" name="_method" value="PUT">
-                <div class="form-group">
-                    <label>Titulo</label>
+                <div class="form-group{{hasError('title',$errors)}}">
+                    <label class="control-label">Titulo</label>
                     <input type="text" name="title" class="form-control" value="{{$book->title}}">
+                    {!! helpBlock('title',$errors) !!}
                 </div>
-                <div class="form-group">
-                    <label>Preço</label>
+                <div class="form-group{{hasError('price',$errors)}}">
+                    <label class="control-label">Preço</label>
                     <input type="text" name="price" class="form-control" value="{{$book->price}}">
+                    {!! helpBlock('price',$errors) !!}
                 </div>
                 <div class="form-group">
                     <label>Descrição</label>

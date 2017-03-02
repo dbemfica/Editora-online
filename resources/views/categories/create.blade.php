@@ -8,7 +8,7 @@
         <div class="row">
             <form class="form" action="{{ route('categories.store') }}" method="post">
                 {{ csrf_field() }}
-                <div class="form-group {{hasError($errors)}}">
+                <div class="form-group{{hasError('name',$errors)}}">
                     <label class="control-label">Nome</label>
                     <input type="text" name="name" class="form-control">
                     {!! helpBlock('name',$errors) !!}
