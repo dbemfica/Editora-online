@@ -8,9 +8,10 @@
         <div class="row">
             <form class="form" action="{{ route('categories.store') }}" method="post">
                 {{ csrf_field() }}
-                <div class="form-group">
-                    <label>Nome</label>
+                <div class="form-group {{hasError($errors)}}">
+                    <label class="control-label">Nome</label>
                     <input type="text" name="name" class="form-control">
+                    {!! helpBlock('name',$errors) !!}
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Criar Categoria
