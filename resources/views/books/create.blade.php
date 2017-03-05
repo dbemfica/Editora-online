@@ -6,7 +6,6 @@
             <h3>Novo Livro</h3>
         </div>
         <div class="row">
-            {{dd($errors)}}
             <form class="form" action="{{ route('books.store') }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group{{hasError('title',$errors)}}">

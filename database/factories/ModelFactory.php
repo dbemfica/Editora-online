@@ -32,6 +32,7 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
 $factory->define(App\Book::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->word,
+        'user_id' => 1,
         'subtitle' => $faker->sentence(),
         'price' => $faker->randomNumber(2),
     ];
