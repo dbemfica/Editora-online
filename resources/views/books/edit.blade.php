@@ -24,7 +24,7 @@
                     <textarea name="subtitle" class="form-control">{{$book->subtitle}}</textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Salvar Livro
+                    {!! Button::primary('Salvar Livro')->submit() !!}
                 </div>
             </form>
         </div>

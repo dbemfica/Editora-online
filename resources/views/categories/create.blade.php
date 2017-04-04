@@ -14,7 +14,7 @@
                     {!! helpBlock('name',$errors) !!}
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Criar Categoria
+                    {!! Button::primary('Criar Categoria')->submit() !!}
                 </div>
             </form>
         </div>

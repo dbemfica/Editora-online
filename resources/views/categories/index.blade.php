@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <h3>Listagem de Categorias</h3>
-            <a href="{{ route('categories.create') }}" class="btn btn-primary">Nova Categoria</a>
+            {!! Button::primary('Nova Categoria')->asLinkTo(route('categories.create')) !!}
         </div>
         <div class="row">
             <table class="table table-striped">
@@ -21,11 +21,11 @@
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
                         <td>
-                            <a href="{{route('categories.edit',['$category'=>$category->id])}}" class="btn btn-info" style="float: left; margin-right: 10px;">Edit</a>
+                            {!! Button::info('Edit')->asLinkTo(route('categories.edit',['$category'=>$category->id]))->withAttributes(['style' => 'float: left; margin-right: 10px;']) !!}
                             <form action="{{route('categories.destroy',['category'=>$category->id])}}" method="post" style="padding: 0; margin: 0;">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-danger">Excluir</button>
+                                {!! Button::danger('Excluir')->submit() !!}
                             </form>
                         </td>
                     </tr>

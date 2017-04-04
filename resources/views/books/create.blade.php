@@ -23,7 +23,7 @@
                     <textarea name="subtitle" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Criar Livro
+                    {!! Button::primary('Criar Livro')->submit() !!}
                 </div>
             </form>
         </div>
