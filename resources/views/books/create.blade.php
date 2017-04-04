@@ -8,6 +8,7 @@
         <div class="row">
             <form class="form" action="{{ route('books.store') }}" method="post">
                 {{ csrf_field() }}
+                <input type="hidden" name="redirect_to" value="{{ URL::previous() }}">
                 <div class="form-group{{hasError('title',$errors)}}">
                     <label class="control-label">Titulo</label>
                     <input type="text" name="title" class="form-control">

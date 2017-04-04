@@ -43,7 +43,9 @@ class BooksController extends Controller
         $book->price = $request->get('price');
         $book->subtitle = $request->get('subtitle');
         $book->save();
-        return redirect()->route('books.index');
+
+        $url = $request->get('redirect_to',route('books.index'));
+        return redirect()->to($url);
     }
 
     /**
@@ -69,7 +71,8 @@ class BooksController extends Controller
         $book->fill($request->all());
         $book->save();
 
-        return redirect()->route('books.index');
+        $url = $request->get('redirect_to',route('books.index'));
+        return redirect()->to($url);
     }
 
     /**

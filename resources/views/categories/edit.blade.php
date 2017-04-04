@@ -8,6 +8,7 @@
         <div class="row">
             <form class="form" action="{{ route('categories.update',['categoty' => $category->id]) }}" method="post">
                 {{ csrf_field() }}
+                <input type="hidden" name="redirect_to" value="{{ URL::previous() }}">
                 <input type="hidden" name="_method" value="PUT">
                 <div class="form-group{{hasError('name',$errors)}}">
                     <label class="control-label">Nome</label>
