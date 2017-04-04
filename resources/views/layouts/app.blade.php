@@ -66,7 +66,14 @@
         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
+
         {!! $navbar !!}
+
+        @if(Session::has('message'))
+            <div class="container">
+                {!! Alert::success(Session::get('message'))->close() !!}
+            </div>
+        @endif
         @yield('content')
     </div>
 

@@ -10,7 +10,7 @@
             {!!
                 Table::withContents($categories->items())->striped()
                  ->callback('Acçoes',function($field,$category){
-                    $btnEdit = Button::info('Edit')->asLinkTo(route('categories.edit',['$category'=>$category->id]))->withAttributes(['style' => 'float: left; margin-right: 10px;']);
+                    $btnEdit = Button::info('Editar')->asLinkTo(route('categories.edit',['$category'=>$category->id]))->withAttributes(['style' => 'float: left; margin-right: 10px;']);
                     $btnDel = Button::danger('Excluir')->submit();
                     $routeDel = route('categories.destroy',['category'=>$category->id]);
                     return $btnEdit.

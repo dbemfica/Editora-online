@@ -10,7 +10,7 @@
             {!!
                 Table::withContents($books->items())->striped()
                  ->callback('Acçoes',function($field,$book){
-                    $btnEdit = Button::info('Edit')->asLinkTo(route('books.edit',['book'=>$book->id]))->withAttributes(['style' => 'float: left; margin-right: 10px;']);
+                    $btnEdit = Button::info('Editar')->asLinkTo(route('books.edit',['book'=>$book->id]))->withAttributes(['style' => 'float: left; margin-right: 10px;']);
                     $btnDel = Button::danger('Excluir')->submit();
                     $routeDel = route('books.destroy',['book'=>$book->id]);
                     return $btnEdit.

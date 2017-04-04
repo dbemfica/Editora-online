@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\CategoriesRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoriesController extends Controller
 {
@@ -38,6 +39,7 @@ class CategoriesController extends Controller
     public function store(CategoriesRequest $request)
     {
         Category::create($request->all());
+        Session::flash('message','Categoria cadastrado com sucesso');
         $url = $request->get('redirect_to',route('categories.index'));
         return redirect()->to($url);
     }
@@ -64,7 +66,7 @@ class CategoriesController extends Controller
     {
         $category->fill($request->all());
         $category->save();
-
+        Session::flash('message','Categoria alterada com sucesso');
         $url = $request->get('redirect_to',route('categories.index'));
         return redirect()->to($url);
     }
@@ -78,6 +80,7 @@ class CategoriesController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+        Session::flash('message','Categoria excluida com sucesso');
         return redirect()->route('categories.index');
     }
 }
