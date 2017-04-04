@@ -2,9 +2,10 @@
 
 namespace App;
 
+use Bootstrapper\Interfaces\TableInterface;
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class Book extends Model implements TableInterface
 {
     /**
      * The attributes that are mass assignable.
@@ -18,5 +19,22 @@ class Book extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function getTableHeaders()
+    {
+        return ['ID','Nome'];
+    }
+
+    public function getValueForHeader($header)
+    {
+        switch ($header){
+            case 'ID':
+                return $this->id;
+                break;
+            case 'Nome':
+                return $this->title;
+                break;
+        }
     }
 }

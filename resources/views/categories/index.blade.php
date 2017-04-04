@@ -7,31 +7,20 @@
             {!! Button::primary('Nova Categoria')->asLinkTo(route('categories.create')) !!}
         </div>
         <div class="row">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Ações</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($categories as $category)
-                    <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->name }}</td>
-                        <td>
-                            {!! Button::info('Edit')->asLinkTo(route('categories.edit',['$category'=>$category->id]))->withAttributes(['style' => 'float: left; margin-right: 10px;']) !!}
-                            <form action="{{route('categories.destroy',['category'=>$category->id])}}" method="post" style="padding: 0; margin: 0;">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="_method" value="DELETE">
-                                {!! Button::danger('Excluir')->submit() !!}
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+            {!!
+                Table::withContents($categories->items())->striped()
+                 ->callback('Acçoes',function($field,$category){
+                    $btnEdit = Button::info('Edit')->asLinkTo(route('categories.edit',['$category'=>$category->id]))->withAttributes(['style' => 'float: left; margin-right: 10px;']);
+                    $btnDel = Button::danger('Excluir')->submit();
+                    $routeDel = route('categories.destroy',['category'=>$category->id]);
+                    return $btnEdit.
+                    "<form action=\"$routeDel\" method=\"post\" style=\"padding: 0; margin: 0;\">".
+                    csrf_field().
+                    "<input type=\"hidden\" name=\"_method\" value=\"DELETE\">".
+                    $btnDel.
+                    "</form>";
+                 })
+            !!}
             {{ $categories->links() }}
         </div>
     </div>
