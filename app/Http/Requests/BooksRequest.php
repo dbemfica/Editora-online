@@ -19,7 +19,7 @@ class BooksRequest extends FormRequest
         }
 
         if( $this->route()->getAction()['as'] == 'books.update' ){
-            if( $book = $this->route('book')->user_id == Auth::getUser()->id){
+            if( $book = $this->route('book')->author_id == Auth::getUser()->id){
                 return true;
             }
             return false;
