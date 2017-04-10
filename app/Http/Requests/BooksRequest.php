@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Book;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,9 @@ class BooksRequest extends FormRequest
         }
 
         if( $this->route()->getAction()['as'] == 'books.update' ){
-            if( $book = $this->route('book')->author_id == Auth::getUser()->id){
+            $id = $this->route('book');
+            $book = Book::find($id);
+            if( $book->author_id == Auth::getUser()->id){
                 return true;
             }
             return false;
@@ -34,8 +37,7 @@ class BooksRequest extends FormRequest
      */
     public function rules()
     {
-        $book = $this->route('book');
-        $id = ($book)?$book->id:null;
+        $id = $this->route('book');
         return [
             'title' => "required|max:255|unique:books,title,$id",
             'price' => "required|numeric"

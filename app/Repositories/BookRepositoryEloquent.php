@@ -14,6 +14,9 @@ use App\Validators\BookValidator;
  */
 class BookRepositoryEloquent extends BaseRepository implements BookRepository
 {
+    protected $fieldSearchable = [
+        'title' => 'like'
+    ];
     /**
      * Specify Model class name
      *

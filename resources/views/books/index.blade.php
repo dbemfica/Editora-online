@@ -6,6 +6,13 @@
             <h3>Listagem de LIvros</h3>
             {!! Button::primary('Nova Livro')->asLinkTo(route('books.create')) !!}
         </div>
+        <br>
+        <div class="row pull-right">
+            <form action="" method="get" class="form-inline">
+                <input class="form-control" type="text" name="search" placeholder="Buscar">
+                {!! Button::primary('Buscar')->submit() !!}
+            </form>
+        </div>
         <div class="row">
             {!!
                 Table::withContents($books->items())->striped()
